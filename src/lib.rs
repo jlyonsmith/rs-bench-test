@@ -22,6 +22,18 @@ pub fn fibonacci_2(n: u64) -> u64 {
     fibonacci_inner(0, 1, n)
 }
 
+// fibonacci_2 is essentially compiled to this
+pub fn fibonacci_3(mut n: u64) -> u64 {
+    let (mut a, mut b) = (0, 1);
+
+    while n > 0 {
+        n -= 1;
+        a = a + b;
+        b = a - b; // Yes, b now equals a's previous value
+    }
+    a
+}
+
 #[cfg(test)]
 mod test {
     use super::*;
@@ -44,5 +56,15 @@ mod test {
         assert!(fibonacci_2(3) == 2);
         assert!(fibonacci_2(4) == 3);
         assert!(fibonacci_2(15) == 610);
+    }
+
+    #[test]
+    fn test_fib_3() {
+        assert!(fibonacci_3(0) == 0);
+        assert!(fibonacci_3(1) == 1);
+        assert!(fibonacci_3(2) == 1);
+        assert!(fibonacci_3(3) == 2);
+        assert!(fibonacci_3(4) == 3);
+        assert!(fibonacci_3(15) == 610);
     }
 }

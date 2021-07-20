@@ -8,4 +8,4 @@ A quick test of Rust benchmarking using [Criterion](https:// github.com/bheisler
 2. `git clone` the repo
 3. Run the benchmark with `cargo bench`
 
-Observe the difference in performance between the regular and tail recursion optimized version of the Fibonacci function.
+Observe the difference in performance between the regular, tail recursion optimized and looping version of the Fibonacci function.
